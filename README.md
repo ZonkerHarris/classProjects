@@ -1,5 +1,5 @@
 # classProjects
-Exploring with Arduino      Class Project Ideas, updated 2017-10-18
+Exploring with Arduino      Class Project Ideas, updated 2017-10-23
 
 This document is an outline of what projects I suggest that you try.
 I also suggest that you start with the first 3 projects in order, and
@@ -16,6 +16,9 @@ and I'll be adding Arduino sketches for some projects, and other class
 resource information. Some of these will appear as the class progresses
 (so that you'll focus on some of the initial projects first, and then
 move on to the other topics). 
+
+There is also a wiki, with information and clues about the projects
+at http://arduinoclass.pbworks.com for students to reference.
 
 The class was built around the Arduino M0 processor, rather than a 
 simpler 326-based board (Arduino UNO, for example), because the M0
