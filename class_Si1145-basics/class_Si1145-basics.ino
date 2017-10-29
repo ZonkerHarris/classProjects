@@ -4,6 +4,11 @@
  * https://learn.adafruit.com/adafruit-si1145-breakout-board-uv-ir-visible-sensor/
  * https://github.com/adafruit/Adafruit_MPL115A2
  * https://www.adafruit.com/product/992
+ * http://www.adafruit.com/datasheets/Si1145-46-47.pdf
+ *   (Read the datasheet for more info about what the chip can do.)
+ * https://www.iuva.org/uv-faqs  International UA Association FAQs
+ * https://www.silabs.com/products/sensors/optical/si114x  Silicon Labs product page
+ * 
  * 
  * i2c address is 0x60, and cannot be changed.  
  * Price was $10(US) as of this writing.

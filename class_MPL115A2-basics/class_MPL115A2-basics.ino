@@ -3,25 +3,33 @@
  * 
  * https://github.com/adafruit/Adafruit_MPL115A2
  * https://www.adafruit.com/product/992
+ * https://cdn-shop.adafruit.com/datasheets/MPL115A2.pdf
+ *   (Read the datasheet for more info about what the chip can do.)
  * 
- * At 1.5 hPa resolution, the MPL115A2 is not as precise as the BMP085, which has up to 
- * 0.03 hPa resolution so we don't suggest the MPL115A2 as a precision altimeter.
+ * At 1.5 hPa resolution, the MPL115A2 is not as precise as the BMP085, 
+ * which has up to 0.03 hPa resolution so we don't suggest the MPL115A2 
+ * as a precision altimeter.
  * 
- * i2c address is 0x60, and cannot be changed.  Price was $8(US) as of this writing.
+ * i2c address is 0x60, and cannot be changed.  
+ * Price was $8(US) as of this writing.
  * 
- * Pinouts:  Vin takes 3-5v   3o is the *output* of the 3.3v regulator on the board!
+ * Pinouts:  Vin takes 3-5v   
  *    GND goes to ground.  SDA is the i2c Data bus lead, SCL is the i2c Clock lead. 
+ *    SDWN will Shutdown (disable) the board when you connect it to ground
+ *      (You can use this to selectively enable different boards on one address.)
+ *    RST when pulled to Ground, will disable the I2C communications.
  *    
  * Serial Monitor and Serial Plotter cannot run at the same time. Pick only one!
  * 
- * This is from the Adafruit example sketch. It doesn't read the sensor into a variable,
+ * This is from Adafruit's example sketch. It doesn't read the sensor into a variable,
  *  but rather it simply prints the variable. Notice it calls the funtion, and tells
  *  which variable will receive the first and second results!
 mpl115a2.getPT(&pressureKPA,&temperatureC);
 Serial.print("Pressure (kPa): "); Serial.print(pressureKPA, 4); Serial.print(" kPa  ");
 Serial.print("Temp (*C): "); Serial.print(temperatureC, 1); Serial.println(" *C both measured together");
  * 
- * Since I wanted to also show the Fahrenheit value, I need to get the C value and calculate.
+ * Since I wanted to also show the Fahrenheit value, I needed to get the Celsius 
+ * value and calculate.
  */
 
 // - - - + - - - - + - - - - + - - - - + - - - - + - - - - + - - - - + - - - - +
@@ -57,7 +65,7 @@ void loop() {
    *   variable will return a floating point number representing the desired
    *   environmental reading.
    *   
-   * Barometric Pressure is read out in KPA (KiloPascals)
+   * The Barometric Pressure is read out in KPA (KiloPascals)
    *  The pascal (symbol Pa) is the SI unit of pressure. It is equivalent to 
    *  one newton per square metre. The unit is named after Blaise Pascal, the 
    *  eminent French mathematician, physicist and philosopher.
@@ -100,7 +108,7 @@ void loop() {
   Serial.print("\tTemperature F: "); Serial.println(tempF, 2);
   // Try changing the precision number to 4, to see the difference.
 
-  // Incerment our loop count (measurement). There are many ways to do this...
+  // Increment our loop count (measurement). There are many ways to do this...
   // measurement = measurement + 1  (this lets you count by twos, threes, Xs)
   measurement++;   
   // The "++" means "increment by 1. Its why there is a C, and C++, but not C+.

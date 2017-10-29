@@ -4,8 +4,10 @@
  * https://learn.adafruit.com/adafruit-si1145-breakout-board-uv-ir-visible-sensor/
  * https://github.com/adafruit/Adafruit_VEML6070
  * https://www.adafruit.com/product/992
+ * https://cdn-learn.adafruit.com/assets/assets/000/032/482/original/veml6070.pdf
  * 
- * i2c addresses are 0x38 and 0x39, and cannot be changed.  
+ * The i2c addresses are 0x38 and 0x39, and cannot be changed.  
+ *  (0x38 is used for write commands, and 0x38 and 0x39 for read commands.)
  * Price was $6(US) as of this writing.
  * 
  * Pinouts:  VIN takes 3-5v   
