@@ -3,6 +3,11 @@
 //    Add to the Preferences, to get the Adafruit boards...
 //    https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
 //   Others https://github.com/arduino/Arduino/wiki/Unofficial-list-of-3rd-party-boards-support-urls#list-of-3rd-party-boards-support-urls 
+// 
+// https://www.adafruit.com/product/165   $1.50 each, reads Celsius natively.
+// https://learn.adafruit.com/tmp36-temperature-sensor/overview 
+// http://www.analog.com/media/en/technical-documentation/data-sheets/TMP35_36_37.pdf 
+// http://www.analog.com/en/products/analog-to-digital-converters/integrated-special-purpose-converters/digital-temperature-sensors/tmp36.html
 
 // create an integer for the pin number for the analog port
 int a0Pin = 14;
@@ -13,6 +18,7 @@ int a4Pin = 18;
 int a5Pin = 19;
 
 // set the initial value, to establish the integer variables
+//  The analog inputs read out in integer values, so use int variables...
 int val1 = 0;
 int val2 = 0;
 int val3 = 0;
@@ -23,7 +29,7 @@ int val6 = 0;
 // - - - + - - - - + - - - - + - - - - + - - - - + - - - - + - - - - + - - - - +
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);  // set up for the pseudo-serial monitor
+  Serial.begin(115200);  // set up for the pseudo-serial monitor
 }
 
 // - - - + - - - - + - - - - + - - - - + - - - - + - - - - + - - - - + - - - - +
@@ -37,9 +43,15 @@ void loop() {
   val4 = analogRead(a3Pin); // read the fourth Analog input pin
   val5 = analogRead(a4Pin); // read the fifth Analog input pin
   val6 = analogRead(a5Pin); // read the sixth Analog input pin
+  /* These inputs are "high impedance". If your readings seem unstable
+   * (the is, not stable/repeatable), it could be due to the impedance
+   * changes from rapid queries. Try reading twice, after a short delay,
+   * using the second reading.
+   */
 
   // Convert the reading into voltage... This depends on the CPU voltage
   // We need small precision, so we'll use FLOATing point variables
+  //   https://www.arduino.cc/en/Reference/Float 
   // Adalogger M0 is a 3.3v CPU, so we give the sensors 3.3 volts...
   // We then divide the result by 1024 steps of our A to D converter
   float tempV1 = val1 * 3.3; tempV1 /= 1024.0;
@@ -97,4 +109,9 @@ void loop() {
 
   //  If it's scrolling by too fast, add a delay here...
   delay(1000);   // the delay value is in milliseconds.
+  // You can make the delay shorter, if your reading will be changing quickly.
+  //  (But doing fast measurements will quickly fill your log.)
+  // If you want to graph the changes over a day, or a week, consider a larger delay.
+  //  (How many seconds in 5 minutes? How many in 30 minutes? How many in an hour?)
+  // Remember that the delay function is in MILLISECONDS (1,000ths of a second).
 }
