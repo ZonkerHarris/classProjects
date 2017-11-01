@@ -30,18 +30,21 @@ set up a portable experiment, capture data from a number of sensors,
 react to that environment, and log the readings to the SD card.
    https://www.adafruit.com/product/2796#tutorials 
    
-The reason I chose the SD card, rather than a wifi-enabled board,
-was that students can get cheap or free access to some "cloud services"
+The reasons I chose the SD card, rather than a wifi-enabled board 
+include students can get cheap or free access to some "cloud services"
 while they are still students, but that service will eventually cost 
-you money every month. Using the SD card is a fast and easy method to 
+you money every month; Wireless communications with Bluetooth or
+Access Points adds complication which may be a problem for students
+with less experience; Using the SD card is a fast and easy method to 
 pull your data into a computer to visualize the information, and
 then analyize it. At that point, you could even use cloud-based
 "Business Intelligence" tools to look for correlations across 
-multiple data sets. Some of you will be drawn to projects where 
-you are taking and logging data, while others may be interested
-in learning to analyze and visualize information. You could
-partner with other students, and collaborate on projects to
-collect and look at data.
+multiple data sets. 
+
+Some of you will be drawn to projects where you are taking and 
+logging data, while others may be interested in learning to 
+analyze and visualize information. You could partner with other 
+students, and collaborate on projects to collect and look at data.
 
 Eventually, I hope that you will try ALL of the projects, to
 be exposed to many sensors and methods. As you continue your
