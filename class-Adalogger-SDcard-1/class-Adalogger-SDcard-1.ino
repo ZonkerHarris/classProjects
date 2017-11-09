@@ -96,7 +96,7 @@ void setup() {
     error(2);
   }
   char filename[15];
-  strcpy(filename, "ANALOG07.TXT"); // <-- The name of the NEW file on the SD Card.
+  strcpy(filename, "ANALOG00.TXT"); // <-- The name of the NEW file on the SD Card.
   for (uint8_t i = 0; i < 100; i++) {
     filename[6] = '0' + i/10;
     filename[7] = '0' + i%10;
@@ -136,12 +136,15 @@ void setup() {
     // January 21, 2014 at 3am you would call:
     // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
   }
-
+  //rtc.adjust(DateTime(2017, 11, 8, 23, 33, 0)); //uncomment this and upload to set
   Serial.println("Ready!");
 }
 
 // - - - + - - - - + - - - - + - - - - + - - - - + - - - - + - - - - + - - - - +
 void loop() {
+  // turn off the red LED to save power...
+  digitalWrite(13, LOW);
+  
   /* This will turn on the green LED near the SD Card slot, reads the Analog 7
   *  pin and writed the result to the SD Card, then reads Analog 7 again, and
   *  prints the result to the Serial Monitor/Grapher, then turns off the LED.
@@ -157,7 +160,11 @@ void loop() {
   
   digitalWrite(8, HIGH);
 
-  // Measure the battery voltage...
+  // Measure the battery voltage... 
+  //  When it's plugged into USB, the voltage is about 4.25v
+  //  But, when you unplug it from USB, the battery voltage will be read
+  //  You can use this to estimate how long your sketch may be able to run 
+  //  on battery power (or see the improvements when you try Low Power fixes.
   float measuredvbat = analogRead(VBATPIN);
   measuredvbat *= 2;    // we divided by 2, so multiply back
   measuredvbat *= 3.3;  // Multiply by 3.3V, our reference voltage
@@ -215,7 +222,7 @@ void loop() {
   Serial.print("; Batt, "); Serial.println(measuredvbat);
   digitalWrite(8, LOW);
   
-  delay(10000);
+  delay(30000);
 }
 
 // - - - + - - - - + - - - - + - - - - + - - - - + - - - - + - - - - + - - - - +
